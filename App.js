@@ -1,11 +1,12 @@
 import React from "react";
+
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 
 import Home from "./screens/Home";
 import Details from "./screens/Details";
-import { SafeAreaView, View, Text } from "react-native";
+import { View, Text } from "react-native";
 
 const theme = {
   ...DefaultTheme,
@@ -26,15 +27,14 @@ const App = () => {
     InterLight: require("./assets/fonts/Inter-Light.ttf"),
   });
 
-  if (!loaded) return null
-  // return(
-  //   <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-  //     <Text>Loading...</Text>
-  //   </View>
-  // );
+  if (!loaded){
+    return null;
+  } 
 
   return (
-    <NavigationContainer theme={theme}>
+
+    <NavigationContainer>
+
       <Stack.Navigator
         screenOptions={{
           headerShown: false,

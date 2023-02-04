@@ -1,9 +1,15 @@
 import React from 'react'
-import { Text } from 'react-native'
+import {View, SafeAreaView, FlatList, Text } from 'react-native'
+import { useState } from 'react'
+
+const {COLORS, NFTdata} = require('../constants')
 
 const Home =()=> {
   return (
-    <Text style={{color:"#0000"}}>Home</Text>
+    <SafeAreaView style={{flex: 1}}>
+
+    </SafeAreaView>
+
   )
 }
 
