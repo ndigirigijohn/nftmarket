@@ -6,7 +6,7 @@ import { useFonts } from "expo-font";
 
 import Home from "./screens/Home";
 import Details from "./screens/Details";
-import { View, Text } from "react-native";
+import { View, Text, SafeAreaView } from "react-native";
 
 const theme = {
   ...DefaultTheme,
@@ -32,6 +32,12 @@ const App = () => {
   } 
 
   return (
+    <SafeAreaView style={{flex: 1,
+      backgroundColor: '#fff',
+      paddingTop: Platform.OS === 'android' ? 25 : 0
+    }}>
+
+
 
     <NavigationContainer>
 
@@ -45,6 +51,8 @@ const App = () => {
         <Stack.Screen name="Details" component={Details} />
       </Stack.Navigator>
     </NavigationContainer>
+    </SafeAreaView>
+
   );
 };
 
