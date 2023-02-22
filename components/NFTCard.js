@@ -1,24 +1,28 @@
 import {View, Text, Image} from 'react-native'
-import { COLORS, FONTS, SIZES, assets } from '../constants'
+import { COLORS, FONTS, SIZES, assets, SHADOWS } from '../constants'
 
-import { CircleButton } from '../components'
+import { CircleButton, RectButton } from './Button'
+import { EthPrice, NFTTitle, SubInfo } from './SubInfo'
 
 import { useNavigation } from '@react-navigation/native'
 
 const NFTCard = ({data}) => {
+    const navigation = useNavigation()
     return (
             <View
             style={{
                 backgroundColor: COLORS.white,
                 borderRadius: SIZES.font,
                 marginBottom: SIZES.extraLarge,
-                margin: SIZES.base
+                margin: SIZES.base,
+                ...SHADOWS.dark
    
             }}>
             <View 
             style={{
                 height: 250,
                 width: '100%',
+            
             }}
             >
                 <Image
@@ -33,7 +37,36 @@ const NFTCard = ({data}) => {
                 />
                 <CircleButton imageUrl={assets.heart} right={10} top={10} />
         </View>
-        <Text>NFTcard</Text>
+        <SubInfo/>
+        <View style={{
+            width: '100%',
+            padding: SIZES.font
+        }}>
+            <NFTTitle
+            title={data.name}
+            subTitle={data.creator}
+            titleSize={SIZES.large}
+            subTitleSize={SIZES.small}
+
+
+            
+            />
+            </View>
+            <View style={{
+                margin: SIZES.font,
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center'
+            }}>
+                <EthPrice price={data.price}/>
+                <RectButton
+                minWidth={SIZES.large}
+                fontSize={SIZES.font}
+                handlePress={() => navigation.navigate('Details', {data})}
+                
+                />
+                </View>
+    
 
             </View>
     )

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text } from 'react-native'
 
-function Details() {
+function Details({data}) {
   return (
     <Text>Details</Text>
   )
